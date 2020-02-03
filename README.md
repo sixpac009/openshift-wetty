@@ -26,7 +26,7 @@ git clone https://github.com/sixpac009/openshift-wetty.git
 ```
 2. Add the security context constraint
 ```terminal
-cd wetty-openshift/openshift
+cd openshift-wetty/openshift
 oc create -f wetty-scc.yaml
 ```
 3. Build the *openssh* container in the *openshift* namespace
