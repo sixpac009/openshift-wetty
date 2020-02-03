@@ -5,16 +5,18 @@ ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk \
 RUN yum install -y --setopt=tsflags=nodocs \
 		make \
     	nmap-ncat \
-    	npm \
+    	rh-nodejs8-nodejs \
     	gcc-c++ \
 		git \
-        atomic-openshift-clients \
+        #atomic-openshift-clients \
 		openssl \
 		unzip \
 		java-1.8.0-openjdk-devel \
-        openssh-server && \
+        openssh && \
     yum clean all && \
     rm -rf /var/cache/yum/*
+RUN ln -s /opt/rh/rh-nodejs8/root/usr/bin/node /usr/bin/node \
+  && ln -s /opt/rh/rh-nodejs8/root/usr/bin/npm /usr/bin/npm
 ADD http://mirrors.gigenet.com/apache/maven/maven-3/3.5.2/binaries/apache-maven-3.5.2-bin.zip /root/apache-maven-3.5.2-bin.zip
 RUN cd /root && \
     unzip /root/apache-maven-3.5.2-bin.zip && \
