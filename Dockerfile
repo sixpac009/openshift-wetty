@@ -3,17 +3,16 @@ FROM registry.access.redhat.com/ubi7/ubi:latest
 ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk \
     HOME=/opt/workspace
 RUN yum install -y --setopt=tsflags=nodocs \
-		make \
-    	nmap-ncat \
-    	rh-nodejs8-nodejs \
-    	gcc-c++ \
-		git \
-        #atomic-openshift-clients \
-		openssl \
-		unzip \
-		java-1.8.0-openjdk-devel \
-        wget \
-        openssh && \
+        make \
+        nmap-ncat \
+        rh-nodejs8-nodejs \
+        gcc-c++ \
+        git \
+        atomic-openshift-clients \
+        openssl \
+        unzip \
+        java-1.8.0-openjdk-devel \
+        openssh-server && \
     yum clean all && \
     rm -rf /var/cache/yum/*
 RUN ln -s /opt/rh/rh-nodejs8/root/usr/bin/node /usr/bin/node \
@@ -27,16 +26,17 @@ RUN cd /root && \
 COPY rhel-profile.sh /etc/profile.d/
 RUN chmod a+r /etc/profile.d/rhel-profile.sh
 
-RUN mkdir /home/default 
+# RUN mkdir /home/default 
 RUN useradd -u 2000 default
 RUN ls -l /etc/shadow
 RUN chmod 0640 /etc/shadow
-RUN echo ${WETTY_PASSWORD} | passwd default --stdin 
-RUN chown default:default /home/default
+# RUN echo ${WETTY_PASSWORD} | passwd default --stdin
+RUN echo default:${WETTY_PASSWORD} | chpasswd
+#RUN chown default:default /home/default
 
 RUN /usr/bin/ssh-keygen -A -N '' && \
     chmod -R a+r /etc/ssh/* && \
-    rm /run/nologin && \
+    # rm /run/nologin && \
     /usr/sbin/setcap 'cap_net_bind_service=+ep' /usr/sbin/sshd
 
 EXPOSE 22
