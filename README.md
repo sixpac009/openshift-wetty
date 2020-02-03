@@ -22,7 +22,7 @@ The other security consideration is in the *openssh* container itself.  The SSH 
 ### As an OpenShift Cluster Admin
 1. Clone the repo.
 ```terminal
-git clone https://github.com/kevensen/wetty-openshift.git
+git clone https://github.com/sixpac009/openshift-wetty.git
 ```
 2. Add the security context constraint
 ```terminal
