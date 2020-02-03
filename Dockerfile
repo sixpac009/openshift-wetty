@@ -2,7 +2,7 @@ FROM registry.access.redhat.com/ubi7/ubi:latest
 
 ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk \
     HOME=/opt/workspace
-RUN yum install -y --setopt=tsflags=nodocs --disablerepo='*' --enablerepo='rhel-7-server-rpms' --enablerepo='rhel-7-server-ose-3.7-rpms'\
+RUN yum install -y --setopt=tsflags=nodocs \
 		make \
     	nmap-ncat \
     	npm \
