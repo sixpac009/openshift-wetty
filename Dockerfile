@@ -17,7 +17,8 @@ RUN yum install -y --setopt=tsflags=nodocs \
     rm -rf /var/cache/yum/*
 RUN ln -s /opt/rh/rh-nodejs8/root/usr/bin/node /usr/bin/node \
   && ln -s /opt/rh/rh-nodejs8/root/usr/bin/npm /usr/bin/npm
-ADD http://mirrors.gigenet.com/apache/maven/maven-3/3.5.2/binaries/apache-maven-3.5.2-bin.zip /root/apache-maven-3.5.2-bin.zip
+# ADD http://mirrors.gigenet.com/apache/maven/maven-3/3.5.2/binaries/apache-maven-3.5.2-bin.zip /root/apache-maven-3.5.2-bin.zip
+ADD https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.5.2/apache-maven-3.5.2-bin.tar.gz /root/apache-maven-3.5.2-bin.zip
 RUN cd /root && \
     unzip /root/apache-maven-3.5.2-bin.zip && \
     mv apache-maven-3.5.2 /usr/bin/
