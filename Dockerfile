@@ -1,4 +1,4 @@
-FROM rhel
+FROM registry.access.redhat.com/ubi7/ubi:latest
 
 ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk \
     HOME=/opt/workspace
