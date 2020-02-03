@@ -54,7 +54,7 @@ parameters:
   displayName: Wetty OpenSSH git Repo
   name: GITHUB_REPOSITORY_URL
   required: true
-  value: https://github.com/kevensen/wetty-openshift.git
+  value: https://github.com/sixpac009/openshift-wetty.git
 - description: The repository reference for the Wetty OpenSSH Dockerfile
   displayName: Wetty OpenSSH Dockerfile Repoistory Branch
   name: REPOSITORY_REF
