@@ -27,10 +27,10 @@ RUN cd /root && \
 COPY rhel-profile.sh /etc/profile.d/
 RUN chmod a+r /etc/profile.d/rhel-profile.sh
 
-RUN mkdir /home/default && \
-    useradd -u 2000 default && \
-    echo ${WETTY_PASSWORD} | passwd default --stdin && \
-    chown default:default /home/default
+RUN mkdir /home/default 
+RUN useradd -u 2000 default
+RUN echo ${WETTY_PASSWORD} | passwd default --stdin 
+RUN chown default:default /home/default
 
 RUN /usr/bin/ssh-keygen -A -N '' && \
     chmod -R a+r /etc/ssh/* && \
