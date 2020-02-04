@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi7/ubi:latest
+FROM registry.access.redhat.com/ubi8/ubi:latest
 
 ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk \
     HOME=/opt/workspace
@@ -12,9 +12,9 @@ COPY ./rhsm-ca /etc/rhsm/ca
 RUN rm /etc/rhsm-host && \
     yum repolist --disablerepo=* && \
     subscription-manager repos \
-    --enable rhel-7-for-x86_64-appstream-rpms \ 
-    --enable rhel-7-for-x86_64-baseos-rpms \
-    --enable rhel-7-for-x86_64-supplementary-rpms && \
+    --enable rhel-8-for-x86_64-appstream-rpms \ 
+    --enable rhel-8-for-x86_64-baseos-rpms \
+    --enable rhel-8-for-x86_64-supplementary-rpms && \
     yum install -y --setopt=tsflags=nodocs \
         make \
         nmap-ncat \
