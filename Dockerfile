@@ -44,7 +44,7 @@ RUN useradd -u 2000 default
 RUN ls -l /etc/shadow
 RUN chmod 0640 /etc/shadow
 # RUN echo ${WETTY_PASSWORD} | passwd default --stdin
-RUN echo default:${WETTY_PASSWORD} | chpasswd
+RUN echo default:default | chpasswd
 #RUN chown default:default /home/default
 
 RUN /usr/bin/ssh-keygen -A -N '' && \
