@@ -2,7 +2,20 @@ FROM registry.access.redhat.com/ubi7/ubi:latest
 
 ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk \
     HOME=/opt/workspace
-RUN yum install -y --setopt=tsflags=nodocs \
+
+# Copy entitlements
+COPY ./etc-pki-entitlement /etc/pki/entitlement
+# Copy subscription manager configurations
+COPY ./rhsm-conf /etc/rhsm
+COPY ./rhsm-ca /etc/rhsm/ca
+
+RUN rm /etc/rhsm-host && \
+    yum repolist --disablerepo=* && \
+    subscription-manager repos \
+    --enable rhel-7-for-x86_64-appstream-rpms \ 
+    --enable rhel-7-for-x86_64-baseos-rpms \
+    --enable rhel-7-for-x86_64-supplementary-rpms && \
+    yum install -y --setopt=tsflags=nodocs \
         make \
         nmap-ncat \
         rh-nodejs8-nodejs \
