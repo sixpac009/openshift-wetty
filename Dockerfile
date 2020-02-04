@@ -18,18 +18,18 @@ RUN rm /etc/rhsm-host && \
     yum install -y --setopt=tsflags=nodocs \
         make \
         nmap-ncat \
-        rh-nodejs8-nodejs \
+        nodejs \
         gcc-c++ \
         git \
-        atomic-openshift-clients \
+        #atomic-openshift-clients \
         openssl \
         unzip \
         java-1.8.0-openjdk-devel \
         openssh-server && \
     yum clean all && \
     rm -rf /var/cache/yum/*
-RUN ln -s /opt/rh/rh-nodejs8/root/usr/bin/node /usr/bin/node \
-  && ln -s /opt/rh/rh-nodejs8/root/usr/bin/npm /usr/bin/npm
+# RUN ln -s /opt/rh/rh-nodejs8/root/usr/bin/node /usr/bin/node \
+#   && ln -s /opt/rh/rh-nodejs8/root/usr/bin/npm /usr/bin/npm
 # ADD http://mirrors.gigenet.com/apache/maven/maven-3/3.5.2/binaries/apache-maven-3.5.2-bin.zip /root/apache-maven-3.5.2-bin.zip
 ADD https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.5.2/apache-maven-3.5.2-bin.zip /root/apache-maven-3.5.2-bin.zip
 RUN cd /root && \
