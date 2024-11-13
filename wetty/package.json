@@ -2,7 +2,7 @@
     "name": "wetty",
     "version": "0.2.0",
     "dependencies": {
-        "express": "4.19.2",
+        "express": "4.21.0",
         "socket.io": "^2.4.0",
         "pty.js": "^0.3.0",
         "optimist": "^0.6"
